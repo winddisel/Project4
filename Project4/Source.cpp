@@ -5,6 +5,7 @@ using namespace std;
 class Person
 {
 public:
+	
 	void Print();
 	Person();
 	~Person();
@@ -17,35 +18,37 @@ public:
 		cin >> age;
 		cout << "Please insert 1 for Man, or 0 for woman->";
 		cin >> man;
+
 		cout << "Please insert phone>";
 		cin >> phone;
 	}
 
 private:
-	char name[10];
+	char *name;
 	int age;
 	bool man;
-	char phone[10];
+	char *phone;
+	int count;
 };
 
 void Person::Print()
 {
 	cout << endl;
-	cout << "Name:" << endl;
-	cout << name << endl;
-	cout << "Aage:" << endl;
-	cout << age << endl;
-	cout << "Man-1, or woman-0:" << endl;
-	cout << man << endl;
-	cout << "Phone number:" << endl;
-	cout << phone << endl;
+	cout << "Name: " << name << endl;
+	cout << "Aage: " << age << endl;
+	cout << "Man: "<<man<<endl;
+	cout << "Phone number: " << phone << endl;
 }
 
 Person::Person()
 {
-	strcpy(name, "X");
-	age = 0;
+	name = new char[10];
+	const char* iname;
+	iname = __func__;
+	name = strcpy(name, iname);
+	age = 16;
 	man = true;
+	phone = new char[10];
 	strcpy(phone, "0671234567");
 }
 
@@ -66,7 +69,10 @@ int main()
 	//просто выводим на консоль
 	p2.Print();
 
-
+	//р3 Создает конструктор
+	//просто выводим на консоль
+	Person p3;
+	p3.Print();
 
 	system("pause>>NULL");
 	return 0;
